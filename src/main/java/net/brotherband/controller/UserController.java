@@ -23,14 +23,7 @@ public class UserController {
     @GetMapping("/me")
     public ResponseEntity<UserDTO> getCurrentUser(Authentication authentication) {
         String username = authentication.getName();
-        UserDTO userDTO = userService.findByUsername(username)
-                .map(user -> new UserDTO(
-                        user.getId(),
-                        user.getUsername(),
-                        user.getName(),
-                        user.getDateOfBirth(),
-                        user.getRegisteredIn()))
-                .orElseThrow();
+        UserDTO userDTO = userService.findDTOByUsername(username);
         
         return ResponseEntity.ok(userDTO);
     }

@@ -49,8 +49,10 @@ public class UserService {
         return mapToUserDTO(user);
     }
     
-    public Optional<User> findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public UserDTO findDTOByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .map(this::mapToUserDTO)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with username: " + username));
     }
     
     private UserDTO mapToUserDTO(User user) {
