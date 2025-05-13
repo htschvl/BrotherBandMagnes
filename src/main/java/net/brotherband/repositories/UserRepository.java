@@ -6,12 +6,12 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import net.brotherband.models.User;
+import net.brotherband.models.Users;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, UUID> {
+public interface UserRepository extends JpaRepository<Users, UUID> {
     
-    Optional<User> findByUsername(String username);
+    Optional<Users> findByUsername(String username);
     
     boolean existsByUsername(String username);
 }
