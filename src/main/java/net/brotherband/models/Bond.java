@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Bonds {
+public class Bond {
     
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -23,11 +23,11 @@ public class Bonds {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private Users user;
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "brother_id", nullable = false)
-    private Users brother;
+    private User brother;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "request_id")
@@ -44,11 +44,11 @@ public class Bonds {
         return id;
     }
 
-    public Users getUser() {
+    public User getUser() {
         return user;
     }
 
-    public Users getBrother() {
+    public User getBrother() {
         return brother;
     }
 
@@ -66,11 +66,11 @@ public class Bonds {
         this.id = id;
     }
 
-    public void setUser(Users user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public void setBrother(Users brother) {
+    public void setBrother(User brother) {
         this.brother = brother;
     }
 

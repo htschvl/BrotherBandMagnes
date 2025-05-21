@@ -6,9 +6,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
+import net.brotherband.DTOs.GenericUserDTO;
 import net.brotherband.DTOs.LoginRequestDTO;
 import net.brotherband.DTOs.LoginResponseDTO;
-import net.brotherband.DTOs.UserDTO;
 import net.brotherband.DTOs.UserRegisterDTO;
 import net.brotherband.exceptions.AuthenticationFailedException;
 import net.brotherband.security.JWTUtil;
@@ -44,7 +44,7 @@ public class AuthService {
         }
     }
 
-    public UserDTO register(UserRegisterDTO registerDTO) {
+    public GenericUserDTO register(UserRegisterDTO registerDTO) {
         return userService.register(registerDTO);
     }
 }

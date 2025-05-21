@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import net.brotherband.DTOs.UserDTO;
-import net.brotherband.DTOs.UserMeDTO;
+import net.brotherband.DTOs.MeDTO;
+import net.brotherband.DTOs.ProfileDTO;
 import net.brotherband.services.UserService;
 import lombok.RequiredArgsConstructor;
 
@@ -20,24 +20,16 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 
     private final UserService userService;
-
-    @GetMapping("/profile/me")
-    public ResponseEntity<UserDTO> getCurrentUser1(Authentication authentication) {
-        String username = authentication.getName();
-        UserDTO userDTO = userService.findDTOByUsername(username);
-        
-        return ResponseEntity.ok(userDTO);
-    }
     
     @GetMapping("/me")
-    public ResponseEntity<UserMeDTO> getCurrentUser2(Authentication authentication) {
-    UserMeDTO userMeDTO = userService.getCurrentUserDetails();
+    public ResponseEntity<MeDTO> getCurrentUser2(Authentication authentication) {
+    MeDTO userMeDTO = userService.getCurrentUserDetails();
     return ResponseEntity.ok(userMeDTO);
 }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getUserById(@PathVariable UUID id) {
-        UserDTO userDTO = userService.findById(id);
+    public ResponseEntity<ProfileDTO> getUserById(@PathVariable UUID id) {
+        ProfileDTO userDTO = userService.findProfileById(id);
         return ResponseEntity.ok(userDTO);
     }
 }

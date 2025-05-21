@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import net.brotherband.DTOs.LoginRequestDTO;
 import net.brotherband.DTOs.LoginResponseDTO;
-import net.brotherband.DTOs.UserDTO;
+import net.brotherband.DTOs.GenericUserDTO;
 import net.brotherband.DTOs.UserRegisterDTO;
 import net.brotherband.services.AuthService;
 import jakarta.validation.Valid;
@@ -23,8 +23,8 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/signup")
-    public ResponseEntity<UserDTO> register(@Valid @RequestBody UserRegisterDTO registerDTO) {
-        UserDTO userDTO = authService.register(registerDTO);
+    public ResponseEntity<GenericUserDTO> register(@Valid @RequestBody UserRegisterDTO registerDTO) {
+        GenericUserDTO userDTO = authService.register(registerDTO);
         return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
     }
 

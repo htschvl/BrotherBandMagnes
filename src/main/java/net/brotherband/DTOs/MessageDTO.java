@@ -1,6 +1,5 @@
 package net.brotherband.DTOs;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -13,11 +12,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
-    
+public class MessageDTO {
     private UUID id;
-    private String username;
-    private String name;
-    private LocalDate dateOfBirth;
-    private LocalDateTime registeredIn;
+    private UUID senderId;
+    private String senderUsername;
+    private String content;
+    private LocalDateTime sentTime;
+    private boolean isRead;
+    private UUID replyTo;
 }
